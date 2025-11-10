@@ -32,16 +32,40 @@ Raw Data → Landing Zone → Processing → Feature Store → Analytics
 ```
 src/
 ├── collectors/          # Data collection services
-├── pipelines/          # Data processing pipelines
-├── warehouse/          # Data warehouse schemas
-├── features/           # Feature engineering
-└── monitoring/         # Pipeline monitoring
+│   └── start_collection.py
+├── api/                 # REST API
+│   ├── routes/
+│   │   └── data_ingestion.py
+│   └── server.py
+├── pipelines/           # Data processing pipelines
+│   └── ingest_pipeline.py
+├── ml/                  # ML models & features
+│   └── features/
+│       └── behavioral_features.py
+├── warehouse/           # Data warehouse schemas
+│   └── init_db.py
+├── processing/          # Data processing (existing)
+│   └── process_data.py
+├── analysis/            # Data analysis (existing)
+│   └── analyze_data.py
+└── utils/               # Utility helpers
+    └── helpers.py
 
 data/
-├── landing/            # Raw data landing zone
-├── processed/          # Cleaned and transformed data
-├── features/           # Computed feature sets
-└── models/             # Trained ML models
+├── landing/             # Raw data landing zone
+├── processed/           # Cleaned and transformed data
+├── features/            # Computed feature sets
+└── models/              # Trained ML models
+
+config/
+├── collectors_config.yaml
+
+notebooks/
+└── exploratory_analysis.ipynb
+
+tests/
+├── unit/
+└── integration/
 ```
 
 ## Data Engineering Workflows
